@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    mysql:
+        image: mysql:8
+        environment: 
+            - MYSQL_ROOT_PASSWORD=root
+        ports: 
+            - 3306:3306
+        volumes:
+            - ./mysql-data:/var/lib/mysql
+            - ./dynamo_output:/home/dynamo-output
+        command: ["--secure-file-priv=/home", "--sql-mode=ALLOW_INVALID_DATES"]
